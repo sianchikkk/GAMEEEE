@@ -153,7 +153,7 @@ alert(
     "Осторожно: в затопленном супермаркете вас ждут зараженные."
 );
 
-while (true){
+while (true) {
     if (room === "кпп") {
         const choice = prompt(
             "ЗАБРОШЕННЫЙ КПП (ВХОД)\n" +
@@ -212,7 +212,7 @@ while (true){
 
         if (choice === "0" || choice === null) {
             break;
-        } else if (choice === "1") { 
+        } else if (choice === "1") {
             alert("Вы слышите тихий щелчок.");
             room = "архив";
         } else if (choice === "2") {
@@ -223,7 +223,7 @@ while (true){
             alert("Такого действия нет.");
         }
     }
-    
+
     else if (room === "архив") {
         const choice = prompt(
             "ЗАБРОШЕННЫЙ АРХИВ\n" +
@@ -279,5 +279,40 @@ while (true){
             alert("Такого прохода нет.");
         }
     }
+    else if (room === "супермаркет") {
+        const choice = prompt(
+            "ЗАТОПЛЕННЫЙ СУПЕРМАРКЕТ\n" +
+            "Вода по колено. Из темноты слышны щелкающие звуки зараженных.\n" +
+            "1 — Пробраться к аптечке на кассе\n" +
+            "2 — Вернуться на Перекресток\n" +
+            "0 — Завершить игру"
+        );
+
+        if (choice === "0" || choice === null) {
+            break;
+        } else if (choice === "1") {
+            if (inventory.includes("мачете")) {
+                alert("Вы прорубились через зараженных мачете и забрали аптечку!");
+
+                if (inventory.includes("аптечка")) {
+                    alert("Аптечка уже собрана.");
+                } else {
+                    const takeMedkit = confirm("Схватить армейскую аптечку?");
+                    if (takeMedkit) {
+                        inventory.push("аптечка");
+                        alert("Аптечка добавлена в рюкзак.");
+                    }
+                }
+            } else {
+                alert("Зараженные окружили вас! Без оружия вы не смогли пробиться... СМЕРТЬ.");
+                break;
+            }
+        } else if (choice === "2") {
+            room = "перекресток";
+        } else {
+            alert("Такого действия нет.");
+        }
+    }
 }
+
 alert("Игра завершена.");
