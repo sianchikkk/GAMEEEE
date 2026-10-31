@@ -391,30 +391,38 @@ while (true) {
             "0 — Завершить игру"
         );
 
-        if (choice === "0" || choice === null) {
-            break;
-        } else if (choice === "1") {
-            if (inventory.includes("мачете") && inventory.includes("аптечка") && inventory.includes("противогаз")) {
-                alert("Вы надели противогаз, использовали аптечку в бою и нанесли сокрушительный удар мачете!\n\n ТОЛСТЯК ПОВЕРЖЕН! ВЫ ПОБЕДИЛИ!");
-                const medkitIndex = inventory.indexOf("аптечка");
-                if (medkitIndex !== -1) {
-                    inventory.splice(medkitIndex, 1);
-                    alert("Вы израсходовали аптечку в бою.");
+            if (choice === "0" || choice === null) {
+                break;
+            } else if (choice === "1") {
+                if (inventory.includes("мачете") && inventory.includes("аптечка") && inventory.includes("противогаз")) {
+                    alert("Вы надели противогаз, использовали аптечку в бою и нанесли сокрушительный удар мачете!\n\nТОЛСТЯК ПОВЕРЖЕН! ВЫ ПОБЕДИЛИ!");
+                    
+                    const medkitIndex = inventory.indexOf("аптечка");
+                    if (medkitIndex !== -1) {
+                        inventory.splice(medkitIndex, 1);
+                        alert("Вы израсходовали аптечку в бою.");
+                    }
+                    break;
+                } 
+                else if (!inventory.includes("противогаз")) {
+                    alert("Вы бросились в атаку, но ядовитые споры заполнили легкие. Вы задохнулись...");
+                    break;
+                } 
+                else if (!inventory.includes("мачете")) {
+                    alert("Вы защитили дыхание, но вам нечем нанести урон. Зараженный разорвал вас...");
+                    break;
+                } 
+                else if (!inventory.includes("аптечка")) {
+                    alert("Вы нанесли удар, но Толстяк сильно ранил вас. Без аптечки вы истекли кровью...");
+                    break;
                 }
-                break; 
-                
+    
+            } else if (choice === "2") {
+                alert("Вы отступаете в безопасное место, чтобы подготовиться лучше.");
+                room = "перекресток";
             } else {
-                alert("Вам не хватило снаряжения!\n\nВЫ ПОГИБЛИ.");
-                break; 
+                alert("Такого действия нет.");
             }
-            
-        } else if (choice === "2") {
-            alert("Вы отступаете в безопасное место, чтобы подготовиться лучше.");
-            room = "перекресток";
-        } else {
-            alert("Такого действия нет.");
-        }
-    }
 }
 
 alert("Игра завершена.");
