@@ -395,7 +395,7 @@ while (true) {
             break;
         } else if (choice === "1") {
             if (inventory.includes("мачете") && inventory.includes("аптечка") && inventory.includes("противогаз")) {
-                alert("Вы надели противогаз, использовали аптечку в бою и нанесли сокрушительный удар мачете!\n\nБОСС ПОВЕРЖЕН! ВЫ ПОБЕДИЛИ!");
+                alert("Вы надели противогаз, использовали аптечку в бою и нанесли сокрушительный удар мачете!\n\n ТОЛСТЯК ПОВЕРЖЕН! ВЫ ПОБЕДИЛИ!");
                 const medkitIndex = inventory.indexOf("аптечка");
                 if (medkitIndex !== -1) {
                     inventory.splice(medkitIndex, 1);
